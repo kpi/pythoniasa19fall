@@ -1,14 +1,15 @@
 
-def task1():
+def task1(start=2000,end=3200):
     """
     Write a program which will find all such numbers which are divisible by 7 but are not a multiple of 5,
     between 2000 and 3200 (both included). The numbers obtained should be printed in a comma-separated sequence
     on a single line.
     """
     # todo: write your code here
+    print(','.join(str(i) for i in range(start, end + 1) if i % 7 == 0 and i % 5 != 0))
 
 
-def task2(rows, cols):
+def task2(rows=3, cols=5):
     """
     Write a program which takes 2 digits, X,Y as input and generates a 2-dimensional array.
     The element value in the i-th row and j-th column of the array should be i*j.
@@ -21,6 +22,9 @@ def task2(rows, cols):
     [[0, 0, 0, 0, 0], [0, 1, 2, 3, 4], [0, 2, 4, 6, 8]]
     """
     # todo: write your code here
+    return [[ i*j for i in range(cols)] for j in range(rows)]
+
+
 
 
 def task3(password):
@@ -52,15 +56,29 @@ def task3(password):
     False
     """
     # todo: write your code here
+    return (6 <= len(password) <= 12
+          and any('a' <= s <= 'z' for s in password)
+          and any('A' <= s <= 'Z' for s in password)
+          and any('0' <= s <= '9' for s in password)
+          and any(s in '#$@' for s in password))
+print(task3('ABd1234@1'))
+print(task3('a F1#'))
+print(task3('2w3E*'))
+print(task3('2We3345'))
 
+import random
+import string
 
-def task4():
+def task4(n):
     """
     Write password generator function that uses the same rules as in Task 3.
     The password generator function must be able to generate all possible correct passwords.
     """
     # todo: write your code here
-
+    char = '$@#'
+    pass_gen = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits + char) for i in range(n))
+    print(pass_gen)
+task4(10)
 
 if __name__ == '__main__':
     import doctest

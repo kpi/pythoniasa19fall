@@ -5,7 +5,8 @@ def task1():
     between 2000 and 3200 (both included). The numbers obtained should be printed in a comma-separated sequence
     on a single line.
     """
-    # todo: write your code here
+    # todo: write your code here 
+    print(','.join(str(i) for i in range(2000, 3200 + 1) if i % 7 == 0 and i % 5 != 0))
 
 
 def task2(rows, cols):
@@ -21,7 +22,7 @@ def task2(rows, cols):
     [[0, 0, 0, 0, 0], [0, 1, 2, 3, 4], [0, 2, 4, 6, 8]]
     """
     # todo: write your code here
-
+    return([[i*j] for j in range(cols)] for i in range(rows)) 
 
 def task3(password):
     """
@@ -52,7 +53,12 @@ def task3(password):
     False
     """
     # todo: write your code here
-
+    return ( 6 <= len(password) <= 12
+        and any('a' <= s <= 'z' for s in password)
+        and any('A' <= s <= 'Z' for s in password)
+        and any('0' <= s <= '9' for s in password)
+        and any(s in '#$@' for s in password)
+    )
 
 def task4():
     """
@@ -60,7 +66,28 @@ def task4():
     The password generator function must be able to generate all possible correct passwords.
     """
     # todo: write your code here
+    def task4():
+    """
+    Write password generator function that uses the same rules as in Task 3.
+    The password generator function must be able to generate all possible correct passwords.
+    """
 
+    # todo: write your code here
+    import random
+    import string
+    def low(): return random.choice([x for x in string.ascii_letters if x.islower()])
+    def upp(): return random.choice([x for x in string.ascii_letters if x.isupper()])
+    def num(): return str(random.choice(list(range(0,9+1))))
+    def spec(): return random.choice('#$@')
+
+    answ = low() + upp() + num() + spec()
+    for i in range(random.choice(range(2,8))):
+        answ += random.choice(
+            [x for x in string.ascii_letters if x.islower()] +\
+            [x for x in string.ascii_letters if x.isupper()] + \
+            list(range(0,9+1)) + list('#$@'))
+    
+    return ''.join(random.sample(answ, len(answ)))
 
 if __name__ == '__main__':
     import doctest

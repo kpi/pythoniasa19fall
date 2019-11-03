@@ -66,6 +66,7 @@ def task5(text, letter1, letter2):
     return True if (text.rfind(letter1) < text.find(letter2) and letter1 in text) else False
 
 
+
 def task6(text, censored):
     """
     Given the censored text and the list of censored letters, output the uncensored text.

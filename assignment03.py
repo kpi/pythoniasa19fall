@@ -66,13 +66,7 @@ def task4():
     The password generator function must be able to generate all possible correct passwords.
     """
     # todo: write your code here
-    def task4():
-    """
-    Write password generator function that uses the same rules as in Task 3.
-    The password generator function must be able to generate all possible correct passwords.
-    """
-
-    # todo: write your code here
+    
     import random
     import string
     def low(): return random.choice([x for x in string.ascii_letters if x.islower()])

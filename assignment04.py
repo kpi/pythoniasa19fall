@@ -7,7 +7,7 @@ def task1(text):
     [89, 9, -789, 0, 1]
     """
     # todo: write your code here
-
+    return list(text)
 
 def task2(text):
     """
@@ -17,7 +17,7 @@ def task2(text):
     'apple pen pen pineapple'
     """
     # todo: write your code here
-
+     return sorted(str.split(text))
 
 def task3(text):
     """
@@ -30,7 +30,7 @@ def task3(text):
     {'digits': 0, 'letters': 26}
     """
     # todo: write your code here
-
+    return {'digits': len(set(i for i in text if i.isdigit())), 'letters': len(set(i for i in text if i.isalpha())) }
 
 def task4(digit):
     """
@@ -40,7 +40,7 @@ def task4(digit):
     [0, 1234, 2468, 3702, 4936, 6170, 7404, 8638, 9872, 11106]
     """
     # todo: write your code here
-
+    return digit*4 + digit*30 + digit*200 + digit*1000
 
 def task5(text, letter1, letter2):
     """
@@ -60,7 +60,7 @@ def task5(text, letter1, letter2):
     False
     """
     # todo: write your code here
-
+    return 0 <= text.rfind(letter1) < text.find(letter2) 
 
 def task6(text, censored):
     """
@@ -74,7 +74,9 @@ def task6(text, censored):
     'UPPERCASE'
     """
     # todo: write your code here
-
+    for c in censored: 
+        text = text.replace('*', c, 1)
+    return text
 
 def task7(text, words):
     """
@@ -91,7 +93,7 @@ def task7(text, words):
     False
     """
     # todo: write your code here
-
+    return not any([False for ch in word if ch not in set(text.lower() + text.upper())] for word in words)
 
 if __name__ == '__main__':
     import doctest

@@ -2,7 +2,7 @@
 Assignment 1-A
 ==============
 
-Write fuction that generates the text below; use at least variables and f-strings.
+Write function that generates the text below; use at least variables and f-strings.
 For those who are already familiar with Python – write the best code you can to conform to the Zen of Python.
 
 >>> print(poem())
@@ -85,8 +85,22 @@ That lay in the house that Jack built.
 <BLANKLINE>
 """
 
+
 def poem():
-    return ''
+    objects = ['house that Jack built.', 'malt', 'rat,', 'cat,', 'dog,', 'cow with the crumpled horn,',
+               'maiden all forlorn,', 'man all tattered and torn,', 'priest all shaven and shorn,',
+               'cock that crowed in the morn,', 'farmer sowing his corn,']
+    actions = ['lay in', 'ate', 'killed', 'worried', 'tossed', 'milked', 'kissed', 'married', 'waked', 'kept']
+
+    first_rows = ['This is the ' + obj for obj in objects]
+    next_rows = ['---'] + ['That ' + act + ' the ' + obj for act, obj in zip(actions, objects)]
+
+    result = [[first_row] + list(reversed(next_rows[:(i + 1)])) for i, first_row in enumerate(first_rows)]
+    result[-1][-1] = ''
+
+    from itertools import chain
+
+    return '\n'.join(chain(*result))
 
 
 if __name__ == '__main__':
